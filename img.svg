@@ -1,54 +1,76 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="800" height="500" fill="#f9f3e9" />
-  
-  <!-- Egyptian-style decorative border -->
-  <rect x="20" y="20" width="760" height="460" fill="none" stroke="#8b5a2b" stroke-width="8" />
-  <path d="M20,80 L780,80" stroke="#8b5a2b" stroke-width="4" />
-  <path d="M20,420 L780,420" stroke="#8b5a2b" stroke-width="4" />
-  
-  <!-- Title -->
-  <text x="400" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#5d4037">RoBERTa-AegyptusTranslit-Classifier</text>
-  
-  <!-- Papyrus/document with transliteration -->
-  <rect x="140" y="110" width="520" height="100" fill="#e6d2b5" stroke="#c9a978" stroke-width="2" />
-  <path d="M140,110 Q145,115 150,110 Q155,105 160,110 Q165,115 170,110 Q175,105 180,110 Q185,115 190,110 Q195,105 200,110 Q205,115 210,110" stroke="#c9a978" stroke-width="1.5" fill="none" />
-  <path d="M140,210 Q145,205 150,210 Q155,215 160,210 Q165,205 170,210 Q175,215 180,210 Q185,205 190,210 Q195,215 200,210 Q205,205 210,210" stroke="#c9a978" stroke-width="1.5" fill="none" />
-  
-  <!-- Example transliteration text -->
-  <text x="400" y="160" font-family="Arial, sans-serif" font-size="24" text-anchor="middle" fill="#5d4037">wnn-nfr nb HoA anx</text>
-  
-  <!-- Time periods arrow -->
-  <path d="M140,350 L660,350" stroke="#5d4037" stroke-width="3" />
-  <polygon points="665,350 645,345 645,355" fill="#5d4037" />
-  
-  <!-- Time period markers -->
-  <circle cx="200" cy="350" r="10" fill="#9c3e19" />
-  <circle cx="290" cy="350" r="10" fill="#d4a13b" />
-  <circle cx="400" cy="350" r="10" fill="#4a7c59" />
-  <circle cx="516" cy="350" r="10" fill="#1e3a5f" />
-  <circle cx="620" cy="350" r="10" fill="#800080" />
-  
-  <!-- Time period labels -->
-  <text x="200" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#9c3e19">Predynastic &amp;</text>
-  <text x="200" y="395" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#9c3e19">Early Dynastic</text>
-  
-  <text x="290" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#d4a13b">Old Kingdom &amp;</text>
-  <text x="290" y="395" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#d4a13b">First Intermediate</text>
-  
-  <text x="400" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#4a7c59">Middle Kingdom &amp;</text>
-  <text x="400" y="395" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#4a7c59">Second Intermediate</text>
-  
-  <text x="515" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e3a5f">New Kingdom &amp;</text>
-  <text x="515" y="395" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e3a5f">Third Intermediate</text>
-  
-  <text x="620" y="380" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#800080">Late Period &amp;</text>
-  <text x="620" y="395" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#800080">Greco-Roman</text>
-  
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="background-color: #f0f0f0; font-family: 'Segoe UI', Arial, sans-serif;">
 
-  <!-- Classification arrows -->
-  <path d="M400,230 L400,330" stroke="#5d4037" stroke-width="2" stroke-dasharray="5,5" />
-  <polygon points="400,325 395,315 405,315" fill="#5d4037" />
-  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+    <filter id="papyrusTexture" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="3" seed="10" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0
+                                           0 1 0 0 0
+                                           0 0 1 0 0
+                                           0 0 0 0.3 0" />
+      <feComposite operator="in" in2="SourceGraphic" result="textured"/>
+      <feBlend in="SourceGraphic" in2="textured" mode="multiply" />
+    </filter>
+  </defs>
+
+  <!-- Background with subtle papyrus hint (optional) -->
+  <rect x="0" y="0" width="800" height="450" fill="#FAF0E6" />
+  <!-- <rect x="0" y="0" width="800" height="450" fill="#FAF0E6" filter="url(#papyrusTexture)" /> -->
+
+
+  <!-- 1. Input: Transliteration -->
+  <g id="input-group">
+    <rect x="50" y="150" width="200" height="100" rx="10" ry="10" fill="#FFF8DC" stroke="#D2B48C" stroke-width="2"/>
+    <text x="150" y="190" font-size="20" text-anchor="middle" fill="#5D4037">j.n.k Hnꜥ.f</text>
+    <text x="150" y="220" font-size="16" text-anchor="middle" fill="#795548">(Transliteration)</text>
+    <text x="70" y="180" font-size="28" fill="#A1887F">𓏞</text> <!-- Papyrus scroll hieroglyph -->
+  </g>
+
+  <!-- Arrow 1 -->
+  <line x1="260" y1="200" x2="330" y2="200" stroke="#333" stroke-width="2.5" marker-end="url(#arrowhead)" />
+
+  <!-- 2. Processing: RoBERTa AI -->
+  <g id="ai-processor">
+    <!-- Simplified AI/Brain Icon -->
+    <circle cx="390" cy="200" r="40" fill="#B0E0E6" stroke="#4682B4" stroke-width="2"/>
+    <circle cx="390" cy="200" r="25" fill="none" stroke="#4682B4" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <path d="M 380 190 Q 390 175, 400 190 M 380 210 Q 390 225, 400 210 M 375 200 L 405 200"
+          stroke="#4682B4" stroke-width="1.5" fill="none"/>
+    <text x="390" y="265" font-size="18" text-anchor="middle" fill="#003366" font-weight="bold">RoBERTa</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <line x1="430" y1="200" x2="500" y2="200" stroke="#333" stroke-width="2.5" marker-end="url(#arrowhead)" />
+
+  <!-- 3. Output: Historical Periods -->
+  <g id="output-periods">
+    <text x="650" y="100" font-size="18" text-anchor="middle" fill="#333" font-weight="bold">Historical Periods</text>
+
+    <!-- Predynastic & Early Dynastic -->
+    <rect x="520" y="120" width="260" height="35" rx="5" ry="5" fill="#F5DEB3" stroke="#DEB887" stroke-width="1"/>
+    <text x="650" y="143" font-size="12" text-anchor="middle" fill="#5D4037">Predynastic and Early Dynastic</text>
+
+    <!-- Old Kingdom & First Intermediate -->
+    <rect x="520" y="165" width="260" height="35" rx="5" ry="5" fill="#E0C097" stroke="#CD853F" stroke-width="1"/>
+    <text x="650" y="188" font-size="12" text-anchor="middle" fill="#5D4037">Old Kingdom and First Intermediate</text>
+
+    <!-- Middle Kingdom & Second Intermediate -->
+    <rect x="520" y="210" width="260" height="35" rx="5" ry="5" fill="#ADD8E6" stroke="#87CEEB" stroke-width="1"/>
+    <text x="650" y="233" font-size="12" text-anchor="middle" fill="#2F4F4F">Middle Kingdom and Second Intermediate</text>
+
+    <!-- New Kingdom & Third Intermediate -->
+    <rect x="520" y="255" width="260" height="35" rx="5" ry="5" fill="#FFD700" stroke="#DAA520" stroke-width="1"/>
+    <text x="650" y="278" font-size="12" text-anchor="middle" fill="#8B4513">New Kingdom and Third Intermediate</text>
+
+    <!-- Late Period & Greco-Roman Egypt -->
+    <rect x="520" y="300" width="260" height="35" rx="5" ry="5" fill="#D8BFD8" stroke="#BA55D3" stroke-width="1"/>
+    <text x="650" y="323" font-size="12" text-anchor="middle" fill="#4B0082">Late Period and Greco-Roman</text>
+  </g>
+
+  <!-- Project Title -->
+  <text x="400" y="40" font-size="28" text-anchor="middle" fill="#333" font-weight="bold">roberta-aegyptustranslit-classifier</text>
+  <text x="400" y="430" font-size="12" text-anchor="middle" fill="#666">Input Transliteration → AI Classification → Historical Period</text>
+
 </svg>

@@ -1,5 +1,8 @@
 # roberta-aegyptustranslit-classifier
 
+[![FreePalestine.Dev](https://freepalestine.dev/header/1)](https://freepalestine.dev)
+
+
 A fine-tuned `RoBERTa-base` model for classifying **Ancient Egyptian transliterations** into their respective historical **time periods** ('Predynastic & Early Dynastic', 'Old Kingdom & First Intermediate', 'Middle Kingdom & Second Intermediate', 'New Kingdom & Third Intermediate', 'Late Period & Greco-Roman Egypt').
 
 View and use the model on HuggingFace via: https://huggingface.co/RamzyBakir/roberta-aegyptustranslit-classifier
